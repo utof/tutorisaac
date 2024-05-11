@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+  </head>
+  <body>
+    <div id="root" style="overflow: auto;">
+      <div style="background-color: blue; width: 40px; height: 40px;"></div>
+    </div>
+    <!-- <script type="module" src="/src/main.jsx"></script> -->
+    <script>
+      // console.log(document.getElementById('root'));
+      // console.log('Hello from Vite!')
+      // const element = document.createElement('div');
+      const element = document.getElementById('root');
+      // document.getElementById('root').appendChild(element);
+
+      element.style.backgroundColor = 'red';
+
+      element.style.width = '100px';
+      element.style.height = '100px';
+    </script>
+  </body>
+</html>
