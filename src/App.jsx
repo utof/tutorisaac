@@ -1,81 +1,27 @@
-// import './index.css'
-import YtLogo from "./assets/ytlogo.svg?react";
-import HamburgerIcon from "./assets/hamburger.svg?react";
-import Magnifier from "./assets/magnifier.svg?react";
-import SearchBar from "./components/SearchBar";
+import { useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Tiles from "./components/Tiles";
 
 function App() {
+  const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
+  const MainContent = // TODO i couldnt put the <> and </> inline, had to create a component, fix? // TODO when to use redirect/navigate?
+    (
+      <>
+        <Navbar setIsSideMenuOpen={setIsSideMenuOpen} />
+        <Tiles isSideMenuOpen={isSideMenuOpen} />
+      </>
+    );
   return (
-    <div id="navbar" style={styles.navbar}>
-      <div
-        id="hamburger-ytlogo-container"
-        style={styles.hamburgerYtLogoContainer}
-      >
-        <div id="hamburger-container" style={styles.hamburgerContainer}>
-          <div id="svg-container" style={styles.svgContainer}>
-            <HamburgerIcon />
-            {/* considred a good practice to instead make a div inside the svg and then */}
-          </div>
-        </div>
-        <div
-          style={{
-            ...styles.hamburgerContainer,
-            width: "200px",
-            marginLeft: "-7px",
-          }}
-        >
-          <div style={styles.svgContainer}>
-            <YtLogo />
-          </div>
-        </div>
-      </div>
-
-      <div
-        id="search"
-        style={{
-          width: "500px",
-          height: "50px",
-          background: "teal",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-        }}
-      >
-        <SearchBar />
-      </div>
-
-      <div
-        style={{ width: "200px", height: "50px", background: "indigo" }}
-      ></div>
-    </div>
+    // howto If path = home OR / then maincontent. And if home then redirect to /
+    <Router>
+      <Routes>
+        <Route path="/home" element={MainContent} />
+        <Route path="/" element={MainContent} />
+        <Route path="*" element={<>404</>} />
+      </Routes>
+    </Router>
   );
 }
-
-const styles = {
-  navbar: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  hamburgerYtLogoContainer: {
-    height: "50px",
-    background: "orange",
-    display: "flex",
-    flexDirection: "row",
-  },
-  hamburgerContainer: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    width: "50px",
-    // height: '50px',
-  },
-  svgContainer: {
-    height: "35px",
-    // marginLeft: '15px',
-    // width: '35px',
-    // background: 'blue',
-  },
-};
 
 export default App;

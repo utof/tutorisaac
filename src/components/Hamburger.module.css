@@ -1,0 +1,51 @@
+.rectangle {
+  /* width: 200px; */
+  height: 100%;
+  background-color: #333;
+  padding: 20px;
+  box-sizing: border-box;
+  /* transition: all 0.3s ease-in-out; */
+  transition: transform 0.3s ease-in-out;
+
+  .open {
+    transform: translateX(0);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .closed {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 7px;
+  color: #fff; /* add hover with animation */
+  /* background-color: #444; */
+
+  &:hover {
+    background-color: #444;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+  }
+
+  .iconContainer {
+    margin-right: 10px;
+    .icon {
+      margin-right: 0px;
+      width: 24px;
+      height: 24px;
+    }
+  }
+  .highlighted {
+    background-color: #ff5e5e;
+  }
+  .text {
+    font-size: 18px;
+    color: #ddd;
+  }
+}

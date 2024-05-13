@@ -1,0 +1,40 @@
+.baba {
+  /* background-color: red; */
+  background: purple;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  /* &:hover {
+    background: blue;
+  } */
+  /* ::-webkit-scrollbar-thumb {
+    width: 1px;
+    background-color: red;
+  } */
+}
+
+.clicked {
+  background: blue;
+  /* margin-left: 200px; */
+}
+
+.tile {
+  flex: 1 0 30%; /* grow, don't shrink, start at 30% of container width */
+  border: 1px solid black;
+  margin: 5px;
+  padding: 10px;
+  min-width: 100px; /* Adjust the min-width as per your requirement */
+  height: 100px; /* Adjust the height as per your requirement */
+}
+
+@media (max-width: 800px) {
+  .tile {
+    flex: 1 0 45%; /* grow, don't shrink, start at 45% of container width */
+  }
+}
+
+@media (max-width: 500px) {
+  .tile {
+    flex: 1 0 90%; /* grow, don't shrink, start at 90% of container width */
+  }
+}
