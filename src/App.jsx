@@ -1,23 +1,35 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Tiles from "./components/Tiles";
+import SidePanelAnimation from "./components/SidePanelAnimation";
+import YoutubeSearchController from "./components/YoutubeSearchController";
 
 function App() {
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
-  const MainContent = // TODO i couldnt put the <> and </> inline, had to create a component, fix? // TODO when to use redirect/navigate?
-    (
+  function withComponents(Component, showNavbar = true, showSidePanel = true) {
+    return (
       <>
-        <Navbar setIsSideMenuOpen={setIsSideMenuOpen} />
-        <Tiles isSideMenuOpen={isSideMenuOpen} />
+        {showNavbar && <Navbar setIsSideMenuOpen={setIsSideMenuOpen} />}
+        <div style={{ display: "flex", alignItems: "flex-start" }}>
+          {showSidePanel && (
+            <SidePanelAnimation isSideMenuOpen={isSideMenuOpen} />
+          )}
+          {Component}
+        </div>
       </>
     );
+  }
   return (
-    // howto If path = home OR / then maincontent. And if home then redirect to /
     <Router>
       <Routes>
-        <Route path="/home" element={MainContent} />
-        <Route path="/" element={MainContent} />
+        <Route
+          path="/home"
+          element={withComponents(<YoutubeSearchController />)}
+        />
+        <Route path="/" element={withComponents(<YoutubeSearchController />)} />
+        <Route path="/shorts" element={withComponents(<>Shorts</>)} />
+        <Route path="/subscriptions" element={<>Subscriptions</>} />
+        <Route path="/channel" element={<>Channel</>} />
         <Route path="*" element={<>404</>} />
       </Routes>
     </Router>
