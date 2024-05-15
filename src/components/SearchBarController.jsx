@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import SearchBar from "./SearchBar";
 
-function SearchBarController(setSearchText) {
+function SearchBarController({ setSearchText }) {
   const [isFocused, setIsFocused] = useState(false);
   const [inputText, setInputText] = useState("");
   const [searchHistory, setSearchHistory] = useState([]);
@@ -18,6 +18,8 @@ function SearchBarController(setSearchText) {
       const newArray = [inputText, ...prevHistory];
       return newArray;
     });
+    console.log("searched for: ", inputText);
+    setSearchText(inputText);
     setInputText("");
   };
   return (

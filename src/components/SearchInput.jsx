@@ -1,10 +1,10 @@
 import React from "react";
 
-function SearchInput({ searchText, handleSearch, setInputText, setIsFocused }) {
+function SearchInput({ inputText, handleSearch, setInputText, setIsFocused }) {
   return (
     <input
       autoFocus={true}
-      value={searchText}
+      value={inputText}
       onClick={(e) => {
         e.stopPropagation();
       }}

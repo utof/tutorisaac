@@ -31,13 +31,13 @@ function App() {
         <Route
           path="/home"
           element={withComponents(
-            <YoutubeSearchController setSearchText={setSearchText} />
+            <YoutubeSearchController searchText={searchText} />
           )}
         />
         <Route
           path="/"
           element={withComponents(
-            <YoutubeSearchController setSearchText={setSearchText} />
+            <YoutubeSearchController searchText={searchText} />
           )}
         />
         <Route path="/shorts" element={withComponents(<>Shorts</>)} />
