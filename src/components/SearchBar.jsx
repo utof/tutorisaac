@@ -1,3 +1,4 @@
+import { css } from "@emotion/css";
 import Magnifier from "../assets/magnifier.svg?react";
 import { useEffect, useRef, useState } from "react";
 import History from "./History";
@@ -14,43 +15,16 @@ function SearchBar({
   onDeleteHistory,
 }) {
   return (
-    <div
-      style={{
-        position: "relative",
-      }}
-    >
+    <div className={styles.container}>
       {isFocused && !(searchHistory.length === 0) && (
-        //
         <History
           searchHistory={searchHistory}
           setSearchHistory={setSearchHistory}
           onDeleteHistory={onDeleteHistory}
         />
       )}
-      <div
-        id="searchbar"
-        style={{
-          height: "50px",
-          outline: isFocused && "3px solid crimson",
-          borderRadius: "40px",
-          overflow: "hidden",
-          background: "orange",
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-        }}
-      >
-        <div
-          id="search"
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            marginLeft: "10px",
-            width: "300px",
-            height: "30px",
-            background: "none",
-          }}
-        >
+      <div className={styles.searchbar(isFocused)} id="searchbar">
+        <div className={styles.search} id="search">
           {isFocused && (
             <div>
               <Magnifier />
@@ -64,18 +38,11 @@ function SearchBar({
           />
         </div>
         <button
+          className={styles.magnifierButton}
           onClick={handleSearch}
           id="magnifier"
-          style={{
-            width: "50px",
-            height: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            backgroundColor: "#555555",
-          }}
         >
-          <div id="mag-svg" style={{ width: 30 }}>
+          <div className={styles.magnifierSvg} id="mag-svg">
             <Magnifier />
           </div>
         </button>
@@ -83,5 +50,40 @@ function SearchBar({
     </div>
   );
 }
+
+const styles = {
+  container: css`
+    position: relative;
+  `,
+  searchbar: (isFocused) => css`
+    height: 50px;
+    outline: ${isFocused && "3px solid crimson"};
+    border-radius: 40px;
+    overflow: hidden;
+    background: orange;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  `,
+  search: css`
+    display: flex;
+    flex-direction: row;
+    margin-left: 10px;
+    width: 300px;
+    height: 30px;
+    background: none;
+  `,
+  magnifierButton: css`
+    width: 50px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #555555;
+  `,
+  magnifierSvg: css`
+    width: 30px;
+  `,
+};
 
 export default SearchBar;

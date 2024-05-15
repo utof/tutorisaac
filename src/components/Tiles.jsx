@@ -4,7 +4,7 @@ import { css } from "@emotion/css";
 
 function Tiles({ videoList }) {
   return (
-    <div style={styles.tilesContainer}>
+    <div className={styles.tilesContainer}>
       {videoList.map((video, index) => (
         <Tile
           videoId={video.videoId}
@@ -13,6 +13,7 @@ function Tiles({ videoList }) {
           channelName={video.channelName}
           views={video.views}
           date={video.date}
+          thumbnail={video.thumbnail}
         />
       ))}
     </div>
