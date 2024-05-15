@@ -15,12 +15,13 @@ function SearchInput({ inputText, handleSearch, setInputText, setIsFocused }) {
       }}
       onChange={(event) => {
         setInputText(event.target.value);
+        setIsFocused(true);
       }}
       onFocus={() => {
         setIsFocused(true);
       }}
       type="text"
-      placeholder="hellohello search ples"
+      placeholder="Search for videos"
       style={{
         height: "100%",
         width: "100%",

@@ -1,5 +1,6 @@
 import React from "react";
 import Tile from "./Tile";
+import { css } from "@emotion/css";
 
 function Tiles({ videoList }) {
   return (
@@ -20,13 +21,13 @@ function Tiles({ videoList }) {
 export default Tiles;
 
 const styles = {
-  tilesContainer: {
-    background: "white",
-    marginBottom: "10px",
-    width: "100%",
-    display: "flex",
-    flexDirection: "row",
-    // justifyContent: "space-around",
-    flexWrap: "wrap",
-  },
+  tilesContainer: css`
+    background: white;
+    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  `,
 };

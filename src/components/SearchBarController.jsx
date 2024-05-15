@@ -18,9 +18,10 @@ function SearchBarController({ setSearchText }) {
       const newArray = [inputText, ...prevHistory];
       return newArray;
     });
+    setIsFocused(false);
     console.log("searched for: ", inputText);
     setSearchText(inputText);
-    setInputText("");
+    // setInputText("");
   };
   return (
     <SearchBar

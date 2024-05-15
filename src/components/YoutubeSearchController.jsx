@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Tiles from "./Tiles";
 
+const API_KEY = process.env.REACT_APP_API_KEY;
+
 function YoutubeSearchController({ searchText }) {
   const [videoList, setVideoList] = useState([]);
 
   useEffect(() => {
     const query = searchText;
-    const API_KEY = "AIzaSyD3-x-1QlryPzoFMRZvBX-4EIdhN-BkE50";
     const maxResults = 20;
     const searchYoutube = async () => {
       try {
