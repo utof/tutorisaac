@@ -2,9 +2,9 @@ import React from "react";
 import { useEffect, useState } from "react";
 import SearchBar from "./SearchBar";
 
-function SearchBarController() {
+function SearchBarController(setSearchText) {
   const [isFocused, setIsFocused] = useState(false);
-  const [searchText, setSearchText] = useState("");
+  const [inputText, setInputText] = useState("");
   const [searchHistory, setSearchHistory] = useState([]);
 
   useEffect(() => {
@@ -15,10 +15,10 @@ function SearchBarController() {
 
   const handleSearch = () => {
     setSearchHistory((prevHistory) => {
-      const newArray = [searchText, ...prevHistory];
+      const newArray = [inputText, ...prevHistory];
       return newArray;
     });
-    setSearchText("");
+    setInputText("");
   };
   return (
     <SearchBar
@@ -26,8 +26,8 @@ function SearchBarController() {
       setIsFocused={setIsFocused}
       searchHistory={searchHistory}
       setSearchHistory={setSearchHistory}
-      searchText={searchText}
-      setSearchText={setSearchText}
+      inputText={inputText}
+      setInputText={setInputText}
       handleSearch={handleSearch}
       onDeleteHistory={(index) => {
         const newArr = [...searchHistory];

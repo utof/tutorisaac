@@ -4,7 +4,7 @@ import Magnifier from "../assets/magnifier.svg?react";
 import SearchBar from "./SearchBar";
 import SearchBarController from "./SearchBarController";
 
-function Navbar({ setIsSideMenuOpen }) {
+function Navbar({ setIsSideMenuOpen, setSearchtext }) {
   return (
     <div id="navbar" style={styles.navbar}>
       <div
@@ -46,7 +46,7 @@ function Navbar({ setIsSideMenuOpen }) {
           justifyContent: "center",
         }}
       >
-        <SearchBarController />
+        <SearchBarController setSearchtext={setSearchtext} />
       </div>
 
       <div

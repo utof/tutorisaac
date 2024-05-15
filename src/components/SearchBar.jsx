@@ -8,8 +8,8 @@ function SearchBar({
   setIsFocused,
   searchHistory,
   setSearchHistory,
-  searchText,
-  setSearchText,
+  inputText,
+  setInputText,
   handleSearch,
   onDeleteHistory,
 }) {
@@ -57,8 +57,8 @@ function SearchBar({
             </div>
           )}
           <SearchInput
-            searchText={searchText}
-            setSearchText={setSearchText}
+            inputText={inputText}
+            setInputText={setInputText}
             setIsFocused={setIsFocused}
             handleSearch={handleSearch}
           />

@@ -1,11 +1,6 @@
 import React from "react";
 
-function SearchInput({
-  searchText,
-  handleSearch,
-  setSearchText,
-  setIsFocused,
-}) {
+function SearchInput({ searchText, handleSearch, setInputText, setIsFocused }) {
   return (
     <input
       autoFocus={true}
@@ -19,7 +14,7 @@ function SearchInput({
         }
       }}
       onChange={(event) => {
-        setSearchText(event.target.value);
+        setInputText(event.target.value);
       }}
       onFocus={() => {
         setIsFocused(true);
