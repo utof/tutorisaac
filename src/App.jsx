@@ -6,10 +6,16 @@ import YoutubeSearchController from "./components/YoutubeSearchController";
 
 function App() {
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
+  const [searchText, setSearchText] = useState("");
   function withComponents(Component, showNavbar = true, showSidePanel = true) {
     return (
       <>
-        {showNavbar && <Navbar setIsSideMenuOpen={setIsSideMenuOpen} />}
+        {showNavbar && (
+          <Navbar
+            setSearchText={setSearchText}
+            setIsSideMenuOpen={setIsSideMenuOpen}
+          />
+        )}
         <div style={{ display: "flex", alignItems: "flex-start" }}>
           {showSidePanel && (
             <SidePanelAnimation isSideMenuOpen={isSideMenuOpen} />
@@ -24,9 +30,16 @@ function App() {
       <Routes>
         <Route
           path="/home"
-          element={withComponents(<YoutubeSearchController />)}
+          element={withComponents(
+            <YoutubeSearchController searchText={searchText} />
+          )}
         />
-        <Route path="/" element={withComponents(<YoutubeSearchController />)} />
+        <Route
+          path="/"
+          element={withComponents(
+            <YoutubeSearchController searchText={searchText} />
+          )}
+        />
         <Route path="/shorts" element={withComponents(<>Shorts</>)} />
         <Route path="/subscriptions" element={<>Subscriptions</>} />
         <Route path="/channel" element={<>Channel</>} />

@@ -1,58 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Tiles from "./Tiles";
-const videoList = [
-  {
-    videoId: "dQw4w9WgXcQ",
-    title: "Tile 1",
-    channelName: "Channel 1",
-    views: 100,
-    date: "2022-01-01",
-  },
-  {
-    videoId: "dQw4w9WgXcQ",
-    title: "Tile 2",
-    channelName: "Channel 2",
-    views: 200,
-    date: "2022-01-02",
-  },
-  {
-    videoId: "dQw4w9WgXcQ",
-    title: "Tile 3",
-    channelName: "Channel 3",
-    views: 300,
-    date: "2022-01-03",
-  },
-  {
-    videoId: "dQw4w9WgXcQ",
-    title: "Tile 4",
-    channelName: "Channel 4",
-    views: 400,
-    date: "2022-01-04",
-  },
-  {
-    videoId: "dQw4w9WgXcQ",
-    title: "Tile 5",
-    channelName: "Channel 5",
-    views: 500,
-    date: "2022-01-05",
-  },
-  {
-    videoId: "dQw4w9WgXcQ",
-    title: "Tile 6",
-    channelName: "Channel 6",
-    views: 600,
-    date: "2022-01-06",
-  },
-  {
-    videoId: "dQw4w9WgXcQ",
-    title: "Tile 7",
-    channelName: "Channel 6",
-    views: 600,
-    date: "2022-01-06",
-  },
-];
 
-function YoutubeSearchController() {
+const API_KEY = process.env.REACT_APP_API_KEY;
+
+function YoutubeSearchController({ searchText }) {
+  const [videoList, setVideoList] = useState([]);
+
+  useEffect(() => {
+    const query = searchText;
+    const maxResults = 20;
+    const searchYoutube = async () => {
+      try {
+        const response = await fetch(
+          `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&key=${API_KEY}&type=video&maxResults=${maxResults}`
+        );
+        const data = await response.json();
+        console.log("Data from YouTube API", data);
+        setVideoList(
+          data.items.map((item) => ({
+            videoId: item.id.videoId,
+            title: item.snippet.title,
+            channelName: item.snippet.channelTitle,
+            date: item.snippet.publishedAt,
+          }))
+        );
+        // setVideos(data.items);
+      } catch (error) {
+        console.error("Error fetching data from YouTube API", error);
+      }
+    };
+    searchYoutube();
+  }, [searchText]);
+
   return <Tiles videoList={videoList} />;
 }
 

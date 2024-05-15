@@ -1,15 +1,10 @@
 import React from "react";
 
-function SearchInput({
-  searchText,
-  handleSearch,
-  setSearchText,
-  setIsFocused,
-}) {
+function SearchInput({ inputText, handleSearch, setInputText, setIsFocused }) {
   return (
     <input
       autoFocus={true}
-      value={searchText}
+      value={inputText}
       onClick={(e) => {
         e.stopPropagation();
       }}
@@ -19,13 +14,14 @@ function SearchInput({
         }
       }}
       onChange={(event) => {
-        setSearchText(event.target.value);
+        setInputText(event.target.value);
+        setIsFocused(true);
       }}
       onFocus={() => {
         setIsFocused(true);
       }}
       type="text"
-      placeholder="hellohello search ples"
+      placeholder="Search for videos"
       style={{
         height: "100%",
         width: "100%",
