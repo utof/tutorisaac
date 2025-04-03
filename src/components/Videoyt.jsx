@@ -8,9 +8,11 @@ import {
   ModalFooter,
   Button,
   useDisclosure,
+  Image,
 } from "@nextui-org/react";
 
 export default function Videoyt({
+  // How to quickly remove height and width from everywhere?
   videoId,
   height = "390",
   width = "640",
@@ -35,11 +37,18 @@ export default function Videoyt({
 
   return (
     <>
-      <div onClick={handleVideo}>
-        <img
+      <div onClick={handleVideo} style={{}}>
+        <Image
+          isBlurred
+          // width={1000}
+          // height={500}
           src={thumbnail || "https://via.placeholder.com/150"}
           alt="thumbnail"
-          style={{ cursor: "pointer" }}
+          style={{
+            cursor: "pointer",
+            // width: "100%",
+          }}
+          // className="m-5"
         />
       </div>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange}>

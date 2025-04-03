@@ -60,7 +60,7 @@ const styles = {
     outline: ${isFocused && "3px solid crimson"};
     border-radius: 40px;
     overflow: hidden;
-    background: orange;
+    background: #5555;
     display: flex;
     flex-direction: row;
     align-items: center;

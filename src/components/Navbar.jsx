@@ -3,6 +3,7 @@ import HamburgerIcon from "../assets/hamburger.svg?react";
 import Magnifier from "../assets/magnifier.svg?react";
 import SearchBar from "./SearchBar";
 import SearchBarController from "./SearchBarController";
+import { radioGroup } from "@nextui-org/react";
 
 function Navbar({ setIsSideMenuOpen, setSearchText }) {
   return (
@@ -40,7 +41,7 @@ function Navbar({ setIsSideMenuOpen, setSearchText }) {
         style={{
           width: "500px",
           height: "50px",
-          background: "teal",
+          // background: "teal",
           display: "flex",
           flexDirection: "row",
           justifyContent: "center",
@@ -53,7 +54,7 @@ function Navbar({ setIsSideMenuOpen, setSearchText }) {
         style={{
           width: "200px",
           height: "50px",
-          background: "indigo",
+          // background: "indigo",
         }}
       ></div>
     </div>
@@ -68,7 +69,10 @@ const styles = {
   },
   hamburgerYtLogoContainer: {
     height: "50px",
-    background: "orange",
+    background: "#9999",
+    radius: "20px",
+    // borderRadius: "20px", add border right only. A: ok, below
+    borderBottomRightRadius: "20px",
     display: "flex",
     flexDirection: "row",
   },

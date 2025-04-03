@@ -1,62 +1,55 @@
 .baba {
-  /* background-color: red; */
   background: purple;
   padding: 10px;
   display: flex;
   flex-direction: column;
-  /* &:hover {
-    background: blue;
-  } */
-  /* ::-webkit-scrollbar-thumb {
-    width: 1px;
-    background-color: red;
-  } */
 }
 
 .clicked {
   background: blue;
-  /* margin-left: 200px; */
+}
+.tile {
+  flex: 1 1 calc(33.333% - 20px); /* Three items per row with margin */
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
-.tile {
-  flex: 1 0 30%;
-  border: 1px solid black;
-  margin: 5px;
-  padding: 10px;
-  /* max-w */
-  /* min-width: 100px;
-  height: 100px; */
+@media (max-width: 1200px) {
+  .tile {
+    flex: 1 1 calc(50% - 20px); /* Two items per row */
+  }
 }
 
 @media (max-width: 800px) {
   .tile {
-    flex: 1 0 45%; /* grow, don't shrink, start at 45% of container width */
-  }
-}
-
-@media (max-width: 500px) {
-  .tile {
-    flex: 1 0 90%; /* grow, don't shrink, start at 90% of container width */
+    flex: 1 1 calc(100% - 20px); /* One item per row */
   }
 }
 
 .title {
   font-size: 20px;
   font-weight: bold;
-  color: #333;
+  color: #fff; /* Bright white for the title */
+  margin-bottom: 5px;
 }
 
 .channelName {
   font-size: 14px;
-  color: #666;
+  color: #ddd; /* Light gray for the channel name */
+  margin-bottom: 5px;
 }
 
 .views {
   font-size: 12px;
-  color: #999;
+  color: #aaa; /* Medium gray for the views */
 }
 
 .date {
   font-size: 12px;
-  color: #999;
+  color: #888; /* Darker gray for the date */
 }

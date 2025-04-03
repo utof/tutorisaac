@@ -7,10 +7,9 @@ function Tile({ videoId, title, channelName, views, date, thumbnail }) {
       <Videoyt videoId={videoId} thumbnail={thumbnail} />
       <div className={styles.title}>{title}</div>
       <div className={styles.channelName}>{channelName}</div>
-      {/*  */}
       <div style={{ display: "flex", flexDirection: "row" }}>
         <div className={styles.views}>{views}</div>
-        <div className={styles.date} style={{ marginLeft: "5px" }}>
+        <div className={styles.date} style={{}}>
           {date}
         </div>
       </div>

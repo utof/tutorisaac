@@ -7,7 +7,7 @@ function useYoutubeSearch(searchText) {
 
   useEffect(() => {
     const query = searchText;
-    const maxResults = 5;
+    const maxResults = 10;
     const searchYoutube = async () => {
       try {
         const response = await fetch(
@@ -20,8 +20,12 @@ function useYoutubeSearch(searchText) {
             videoId: item.id.videoId,
             title: item.snippet.title,
             channelName: item.snippet.channelTitle,
-            date: item.snippet.publishedAt,
-            thumbnail: item.snippet.thumbnails.default.url,
+            date: `uploaded ${item.snippet.publishedAt.split("T")[0]}`,
+            thumbnail: item.snippet.thumbnails.high.url,
+            description:
+              item.snippet.description.length > 20
+                ? item.snippet.description.substring(0, 20) + "..."
+                : item.snippet.description,
           }))
         );
         // setVideos(data.items);
